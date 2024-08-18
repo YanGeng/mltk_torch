@@ -178,6 +178,8 @@ def train(config):
             multi_classification_model = get_peft_model(multi_classification_model, lora_config)
 #         print('############ lora model ##############')
 #         print(multi_classification_model)
+    else:
+        multi_classification_model.load_state_dict(torch.load(config.restore_path))
     
     multi_classification_model.to(device)
     # multi_classification_model.cuda()
